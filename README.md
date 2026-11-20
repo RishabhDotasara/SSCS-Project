@@ -23,6 +23,28 @@ run.sh         interactive setup + model launcher
 requirements.txt
 ```
 
+## What the important files do
+
+| File | Purpose |
+|---|---|
+| `reproduce.sh` | Runs the whole study (tabular → GNN → robustness → cross-simulator) and writes every result. Toggle stages with `SKIP_TABULAR`, `SKIP_GNN`, `SKIP_CROSSSIM`. |
+| `run.sh` | Creates both virtual environments and offers a menu for common runs. |
+| `src/train_rf.py` | Random-forest baseline. Builds the scenario-grouped split and evaluates three feature sets: motion only, + swarm-relative position, + local-neighbour geometry (and an optional environment-metadata ablation). |
+| `src/train_xgb.py` | XGBoost baseline on the same split and 18-feature set. |
+| `src/tune_baselines.py` | Random hyperparameter search on the validation PR-AUC, then refits the winner on train+validation. |
+| `src/report_table.py` | Reads the result JSONs and prints the tables used in the paper. |
+| `src/analyze_scenarios.py` | Compares the dataset's formation types with the PyBullet scenarios, explaining why some cross-simulator cases fall outside the training distribution. |
+| `src/gnn/dataset.py` | Turns each snapshot into a graph: one node per agent, edges from k-NN or a radius, target-blind node features. Carries `criticality_score` for evaluation only, never as a model input. Holds the scenario-grouped split. |
+| `src/gnn/model.py` | Message-passing network (GraphSAGE or GCN) and the no-edge (graphless) control. |
+| `src/gnn/train_gnn.py` | Training/evaluation loop. Saves the checkpoint and per-agent predictions, computes classification and top-k ranking metrics plus rank displacement, and supports position-noise and rewired-graph controls. |
+| `src/gnn/eval_graph_uncertainty.py` | Rebuilds the graph at several neighbour counts `k` and measures how much the fixed trained model degrades. |
+| `src/gnn/damage_at_k.py` | Removes the top-`k` agents chosen by the model (and by random, degree, and label-oracle baselines) and measures the effect on the network. |
+| `src/gnn/rank_displacement.py` | Standalone rank-agreement evaluation against the continuous `criticality_score` (rank displacement + Spearman). |
+| `src/sim/run_scenario.py` | Runs the PyBullet formations and writes raw agent trajectories. |
+| `src/sim/extract_features.py` | Converts raw simulator output into the same target-blind features, z-scores them with `feature_stats.json`, and scores them with the trained checkpoint. |
+| `src/sim/feature_stats.json` | Means and standard deviations from the training data, used to normalise simulator features. |
+| `src/sim/summarize_transfer.py` | Aggregates the per-scenario score CSVs into the cross-simulator transfer table. |
+
 ## Data
 
 The dataset `swarm_criticality_dataset_100_scenarios.csv` (~880 MB) is **not**

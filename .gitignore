@@ -16,6 +16,9 @@ __pycache__/
 # ---- Dataset (exceeds GitHub's 100 MB per-file limit; place it manually) ----
 data/*.csv
 
+# ---- Local manuscript (kept out of the code submission) ----
+paper/
+
 # ---- Generated results (reproducible via `bash reproduce.sh`) ----
 results/
 src/sim/output/
