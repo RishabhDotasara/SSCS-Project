@@ -1,0 +1,26 @@
+# ---- Python environments (never commit) ----
+venv/
+.venv-drones/
+
+# ---- Third-party simulator clone (installed editable) ----
+gym-pybullet-drones/
+
+# ---- Python bytecode / caches ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ---- Dataset (exceeds GitHub's 100 MB per-file limit; place it manually) ----
+data/*.csv
+
+# ---- Generated results (reproducible via `bash reproduce.sh`) ----
+results/
+src/sim/output/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.swp

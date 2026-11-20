@@ -1,0 +1,67 @@
+{
+  "rel_x": {
+    "keep_raw": false,
+    "mean": 8.314111976382332e-18,
+    "std": 20.03886248167274
+  },
+  "rel_y": {
+    "keep_raw": false,
+    "mean": -4.3090334469461005e-16,
+    "std": 22.690771155231374
+  },
+  "rel_z": {
+    "keep_raw": false,
+    "mean": -2.4426496864918896e-17,
+    "std": 14.396781595044812
+  },
+  "dist_to_centroid": {
+    "keep_raw": false,
+    "mean": 29.490753597091754,
+    "std": 15.937059884103858
+  },
+  "rank_dist_to_centroid": {
+    "keep_raw": true,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "vx": {
+    "keep_raw": false,
+    "mean": -0.3033810396965252,
+    "std": 3.344068903959006
+  },
+  "vy": {
+    "keep_raw": false,
+    "mean": 3.0202655866679464,
+    "std": 3.123356450175331
+  },
+  "vz": {
+    "keep_raw": false,
+    "mean": -0.07610153625975166,
+    "std": 1.4406343833928406
+  },
+  "speed": {
+    "keep_raw": false,
+    "mean": 5.551447251373753,
+    "std": 1.189474213333362
+  },
+  "heading": {
+    "keep_raw": true,
+    "min": -3.1415887661016537,
+    "max": 3.1415857205991475
+  },
+  "flight_path_angle": {
+    "keep_raw": true,
+    "min": -0.5235987755982988,
+    "max": 0.5235987755982988
+  },
+  "accel": {
+    "keep_raw": false,
+    "mean": 0.034026414119087134,
+    "std": 1.3240631553482307
+  },
+  "heading_rate": {
+    "keep_raw": false,
+    "mean": -0.0067050017496830825,
+    "std": 0.3871598822186257
+  }
+}
